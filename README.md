@@ -2,24 +2,26 @@
 <html lang="th">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>CoupleSplit — ต้น & แป๋ม</title>
 <style>
 :root{
-  --bg:#fff0f5; --card:#ffffffaa; --accent:#ff6f91; --accent2:#ffb6b9;
+  --bg:#fff0f5; --card:#ffffffcc; --accent:#ff6f91; --accent2:#ffb6b9;
   --success:#22c55e; --danger:#ef4444; --text:#334155; --radius:20px;
-  --button-hover:#ff90a0; --button-shadow:#ffb6b9;
   --font-family:'Comic Sans MS', cursive, sans-serif;
 }
 *{box-sizing:border-box;}
-body{
-  margin:0; font-family:var(--font-family); background:var(--bg); display:flex; justify-content:center; padding:20px;
+html, body{
+  margin:0; padding:0; width:100%; height:100%;
+  font-family:var(--font-family); background:var(--bg);
+  display:flex; justify-content:center; align-items:flex-start;
   background-image: linear-gradient(120deg, #ffe0f0 0%, #fff0f5 100%);
 }
 .wrap{
-  width:100%; max-width:600px; background:var(--card); border-radius:var(--radius); backdrop-filter: blur(10px); 
+  width:100%; max-width:600px; margin:20px; background:var(--card); 
+  border-radius:var(--radius); backdrop-filter: blur(10px);
   box-shadow:0 10px 25px rgba(0,0,0,0.15); overflow:hidden; border:2px solid #ffe0f0;
-  animation:fadeIn 0.5s ease-in-out;
+  display:flex; flex-direction:column; animation:fadeIn 0.5s ease-in-out;
 }
 header{
   padding:20px; text-align:center; background:linear-gradient(90deg, #ff6f91, #ffb6b9); color:white;
@@ -27,10 +29,10 @@ header{
 }
 header h1{margin:0; font-size:28px; letter-spacing:1px; text-shadow:1px 1px 4px rgba(0,0,0,0.3);}
 header p{margin:5px 0 0 0; font-size:14px;}
-.names{margin-top:10px; display:flex; justify-content:center; gap:10px;}
+.names{margin-top:10px; display:flex; justify-content:center; gap:10px; flex-wrap:wrap;}
 .names input{
   padding:6px 12px; border-radius:12px; border:none; text-align:center; font-weight:600; font-size:14px;
-  box-shadow:0 3px 6px rgba(0,0,0,0.1);
+  box-shadow:0 3px 6px rgba(0,0,0,0.1); min-width:80px;
 }
 .swap-btn{
   margin-top:10px; padding:6px 12px; border:none; border-radius:12px;
@@ -38,11 +40,11 @@ header p{margin:5px 0 0 0; font-size:14px;}
   box-shadow:0 3px 6px rgba(0,0,0,0.15);
 }
 .swap-btn:hover{background:var(--accent2); color:white; transform:scale(1.05);}
-main{padding:20px;}
+main{padding:20px; flex:1; display:flex; flex-direction:column;}
 .summary{text-align:center; margin-bottom:20px;}
 .summary div{margin:10px 0; font-size:18px; font-weight:600; padding:10px; border-radius:12px; background:#ffffff77; backdrop-filter: blur(5px);}
 .summary .big{font-size:22px; font-weight:700;}
-.list{margin-top:10px;}
+.list{margin-top:10px; flex:1; overflow-y:auto;}
 .item{
   display:flex; justify-content:space-between; align-items:center;
   padding:10px; border-radius:12px; margin-bottom:8px; background:#fff3f6cc; 
@@ -105,7 +107,7 @@ footer{text-align:center; padding:10px; font-size:12px; color:#555;}
 <div class="wrap">
   <header>
     <h1>CoupleSplit</h1>
-    <p>โปรแกรมสำหรับบันทึกค่าใช้จ่าย</p>
+    <p>แบ่งจ่ายสำหรับคู่รัก น่ารัก สดใส</p>
     <div class="names">
       <input id="youName" value="ต้น" />
       <input id="partnerName" value="แป๋ม" />
@@ -118,7 +120,7 @@ footer{text-align:center; padding:10px; font-size:12px; color:#555;}
     </div>
 
     <div class="add-card">
-      <input list="itemList" id="title" placeholder="ชื่อรายการ เช่น ข้าวเที่ยง" type="text">
+      <input list="itemList" id="title" placeholder="ชื่อรายการ เช่น ข้าวเที่ยง">
       <datalist id="itemList">
         <option value="ข้าว">
         <option value="ขนม">
@@ -126,7 +128,6 @@ footer{text-align:center; padding:10px; font-size:12px; color:#555;}
         <option value="ผลไม้">
         <option value="เครื่องดื่ม">
       </datalist>
-
       <input id="amount" placeholder="จำนวนเต็มก่อนหารครึ่ง (฿)" type="number" step="0.01">
       <select id="payer">
         <option value="you">คุณ</option>
@@ -142,7 +143,7 @@ footer{text-align:center; padding:10px; font-size:12px; color:#555;}
       <button id="resetAll">♻️ รีเซ็ตทั้งหมด</button>
     </div>
   </main>
-  <footer>CoupleSplit — คิดค้นและพัฒนาโดย Tonnikorn Version 1.1.2.6 </footer>
+  <footer>CoupleSplit — ใช้งานง่าย น่ารัก สดใส</footer>
 </div>
 
 <!-- popup บิล -->
@@ -242,13 +243,4 @@ footer{text-align:center; padding:10px; font-size:12px; color:#555;}
     });
     html+='</ul>';
     billHTML.innerHTML=html;
-    billPopup.style.display='flex';
-  };
-
-  closePopup.onclick=()=>{ billPopup.style.display='none'; }
-
-  load();
-})();
-</script>
-</body>
-</html>
+    billPopup.style.display='f
