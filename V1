@@ -308,10 +308,10 @@
   <div class="wrap" role="application">
     <header>
       <div class="brand">
-        <div class="logo">CS</div>
+        <div class="logo">TPP</div>
         <div>
-          <h1>CoupleSplit</h1>
-          <p class="lead">แอพเว็บแบ่งจ่ายสำหรับคู่รัก — คำนวนครึ่งอย่างเรียบง่าย</p>
+          <h1>คำนวณรายจ่าย</h1>
+          <p class="lead">โปรแกรมสำหรับคำนวณค่าใช้จ่ายของต้นกับป่อมแป๋ม</p>
         </div>
       </div>
 
@@ -398,7 +398,7 @@
     </main>
 
     <footer>
-      <div>ออกแบบให้สวย เรียบ และสมมาตร — เน้นใช้ง่าย</div>
+      <div></div>
       <div><button class="btn danger" id="resetAll">รีเซ็ตทั้งหมด</button></div>
     </footer>
   </div>
